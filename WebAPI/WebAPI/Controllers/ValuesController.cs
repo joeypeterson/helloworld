@@ -18,11 +18,11 @@ namespace WebAPI.Controllers
        /// Get the contents of the post
        /// </summary>
        /// <returns>Returns the post title</returns>
-        public IEnumerable<string> Get()
+        public string Get()
         {
             Post post = new Post();
             
-                return new string[] { post.Title };
+                return post.Title ;
         }
 
 
@@ -34,12 +34,15 @@ namespace WebAPI.Controllers
         // POST api/values
         public IHttpActionResult Put([FromBody]string name) 
         {
-            Post post = new Post();
-            post.Title =name;
-           
-            return Ok();
-            
-            
+            if (!String.IsNullOrEmpty(name))
+            {
+                Post post = new Post();
+                post.Title = name;
+                return Ok();
+            }
+
+            return BadRequest("Request can not be empty");
+
         }
 
       

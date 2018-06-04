@@ -11,8 +11,8 @@ namespace WebAPI
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
-        
-        public static string ApiFileName = @"/ConfigurationItems/APIValues.config";
+        //Set the configuration file that you want to use. 
+        public static string ApiFileName = @"C:\Users\jp4363\Documents\helloworld\WebAPI\WebAPI\ConfigurationItems\APIValues.config";
         protected void Application_Start()
         {
 

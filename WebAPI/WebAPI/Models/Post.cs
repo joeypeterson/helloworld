@@ -19,8 +19,8 @@ namespace WebAPI.Models
         {
           
         get {
-                //read the content in the file
-                StreamReader sr = new StreamReader(HostingEnvironment.MapPath(WebApiApplication.ApiFileName));
+              
+                StreamReader sr = new StreamReader(WebApiApplication.ApiFileName);
                 title = sr.ReadToEnd();
                 sr.Close();
                 return title;
@@ -28,7 +28,7 @@ namespace WebAPI.Models
             set {
                 //write the update to the file
                 
-                System.IO.File.WriteAllText(HostingEnvironment.MapPath(WebApiApplication.ApiFileName),value);
+                System.IO.File.WriteAllText(WebApiApplication.ApiFileName, value);
                
             }
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using System.Web.Http.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebAPI;
 using WebAPI.Controllers;
@@ -20,7 +21,7 @@ namespace WebAPI.Tests.Controllers
             ValuesController controller = new ValuesController();
 
             // Act
-            IEnumerable<string> result = controller.Get();
+            var result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
@@ -36,9 +37,15 @@ namespace WebAPI.Tests.Controllers
             ValuesController controller = new ValuesController();
 
             // Act
-            controller.Put( "value");
-
+            var valid= controller.Put( "value");
+            var empty =  controller.Put(null);
+           
             // Assert
+       
+            Assert.IsNotNull(valid);
+       
+            empty.ToString();
+            Assert.IsInstanceOfType(empty, typeof(BadRequestErrorMessageResult));
         }
 
       
